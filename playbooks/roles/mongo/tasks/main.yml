@@ -1,0 +1,46 @@
+---
+- name: check to see that MongoDB 2.4 is not installed
+  stat: path=/etc/init.d/mongodb
+  register: mongodb_needs_upgrade
+
+- name: verify 2.4 not installed
+  fail: msg="MongoDB 2.4 is currently installed and cannot be safely upgraded in a clustered configuration.  Please read http://docs.mongodb.org/manual/release-notes/2.6-upgrade/#upgrade-considerations and upgrade to 2.6."
+  when: mongodb_needs_upgrade.stat.exists and MONGO_CLUSTERED
+
+- name: remove mongo 2.4 if present
+  apt: >
+    pkg=mongodb-10gen
+    state=absent purge=yes
+    force=yes
+  when: mongodb_needs_upgrade.stat.exists and not MONGO_CLUSTERED
+
+- name: add the mongodb signing key
+  apt_key: >
+    id=7F0CEB10
+    url={{ MONGODB_APT_KEY }}
+    state=present
+
+- name: add the mongodb repo to the sources list
+  apt_repository: >
+    repo='{{ MONGODB_REPO }}'
+    state=present
+    validate_certs=no
+
+- name: install mongo server and recommends
+  apt: >
+    pkg=mongodb-org={{ mongo_version }}
+    state=present install_recommends=yes
+    force=yes update_cache=yes
+
+- name: create mongo data directory
+  file: >
+    path="{{ item }}" state=directory
+    owner="{{ mongo_user }}"
+    group="{{ mongo_user }}"
+  with_items:
+    - "{{ mongo_data_dir  }}"
+
+- name: install mongo dev package
+  apt: >
+    pkg=mongodb-dev
+    state=installed
