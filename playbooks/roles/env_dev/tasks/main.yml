@@ -1,0 +1,17 @@
+---
+- name: be sure python-software-properties is installed
+  apt: >
+    pkg=python-software-properties
+    state=installed
+  tags: emacs
+
+- name: add repository for emacs24
+  apt_repository: repo='ppa:cassou/emacs'
+  tags: emacs
+
+- name: be sure emacs installed
+  apt: >
+    update-cache=true
+    pkg=emacs24
+    state=installed
+  tags: emacs

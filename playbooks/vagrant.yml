@@ -4,5 +4,6 @@
   sudo_user: root
 
   roles:
+  - env_dev
   - mongo
   - cpp_dev
