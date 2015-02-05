@@ -1,0 +1,7 @@
+---
+- name: checkout open-MPI repo into {{ openmpi_dir }}
+  git: >
+    dest="{{ openmpi_dir }}"
+    repo="{{ openmpi_repo }}"
+    version="{{ openmpi_version }}"
+    accept_hostkey=yes
