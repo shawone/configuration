@@ -20,3 +20,8 @@
   apt: >
     pkg=git
     state=installed
+
+- name: be sure svn is installed
+  apt: >
+    pkg=subversion
+    state=installed
