@@ -6,3 +6,7 @@
     version="{{ openmpi_version }}"
     accept_hostkey=yes
 
+- name: be sure GNU Flex is installed
+  apt: >
+    pkg=flex
+    state=installed
