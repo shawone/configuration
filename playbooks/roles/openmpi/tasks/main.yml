@@ -5,3 +5,4 @@
     repo="{{ openmpi_repo }}"
     version="{{ openmpi_version }}"
     accept_hostkey=yes
+

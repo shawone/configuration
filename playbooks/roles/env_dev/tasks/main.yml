@@ -25,3 +25,22 @@
   apt: >
     pkg=subversion
     state=installed
+
+- name: be sure Autoconf is installed
+  apt: >
+    pkg=autoconf
+    state=installed
+
+- name: add Automake 1.12.2 repository
+  apt_repository: repo='ppa:rbose-debianizer/automake'
+
+- name: be sure Automake 1.12.2 is installed
+  apt: >
+    update-cache=true
+    pkg=automake1.12
+    state=installed
+
+- name: be sure Libtool is installed
+  apt: >
+    pkg=libtool
+    state=installed
