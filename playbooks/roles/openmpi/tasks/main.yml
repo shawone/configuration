@@ -10,3 +10,11 @@
   apt: >
     pkg=flex
     state=installed
+
+- name: install open-MPI
+  command: sudo {{ item }} chdir="{{ openmpi_dir }}"
+  with_items:
+    - ./autogen.pl
+    - ./configure --prefix="{{ openmpi_build }}"
+    - make all install
+  when: OMPI_INSTALL
