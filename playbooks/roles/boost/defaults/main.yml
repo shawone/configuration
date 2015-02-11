@@ -6,3 +6,4 @@ boost_build: "/opt/boost-1.57.0"
 
 boost_url: "http://freefr.dl.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.tar.bz2"
 boost_dest: "/home/vagrant/boost_1_57_0.tar.bz2"
+boost_tarball: "boost_1_57_0.tar.bz2"

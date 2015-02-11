@@ -3,3 +3,4 @@
   command: sudo {{ item }} chdir="/home/vagrant"
   with_items:
     - wget {{ boost_url }}
+    - tar xf {{ boost_tarball }}
