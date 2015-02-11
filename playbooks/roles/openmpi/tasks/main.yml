@@ -1,4 +1,8 @@
 ---
+- name: check if open-MPI already installed
+  stat: path={{ openmpi_build }}/bin/mpirun
+  register: openmpi_need_install
+
 - name: checkout open-MPI repo into {{ openmpi_dir }}
   git: >
     dest="{{ openmpi_dir }}"
@@ -17,4 +21,4 @@
     - ./autogen.pl
     - ./configure --prefix="{{ openmpi_build }}"
     - make all install
-  when: OMPI_INSTALL
+  when: not openmpi_need_install.stat.exists
