@@ -1,0 +1,8 @@
+---
+boost_dir: "/home/vagrant/boost"
+boost_repo: "https://github.com/boostorg/boost.git"
+boost_version: "boost-1.57.0"
+boost_build: "/opt/boost-1.57.0"
+
+boost_url: "http://freefr.dl.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.tar.bz2"
+boost_dest: "/home/vagrant/boost_1_57_0.tar.bz2"

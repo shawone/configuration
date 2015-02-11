@@ -1,0 +1,5 @@
+---
+- name: download boost tarball
+  command: sudo {{ item }} chdir="/home/vagrant"
+  with_items:
+    - wget {{ boost_url }}

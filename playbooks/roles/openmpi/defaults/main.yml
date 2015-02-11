@@ -4,4 +4,6 @@ openmpi_repo: "https://github.com/open-mpi/ompi-release.git"
 openmpi_version: "v1.8.4"
 openmpi_build: "/opt/openmpi"
 
+# 'OMPI_INSTALL: true' to install openMPI
+# 'OMPI_INSTALL: !!null' to skip the install
 OMPI_INSTALL: true
