@@ -1,11 +1,15 @@
 ---
 - name: check bjam config
-  stat: path=/home/vagrant/user-config.jam
-  register: bjam_needs_upgrade
+  stat: path=/root/user-config.jam
+  register: bjam_file
 
 - name: check if boost tarball is already downloaded
   stat: path="{{ boost_dest }}"
   register: boost_needs_dl
+
+- name: check boost library
+  stat: path={{ boost_build }}/lib/libboost_mpi.so
+  register: boost_lib
 
 - name: download boost tarball
   command: sudo {{ item }} chdir="/home/vagrant"
@@ -15,5 +19,13 @@
   when: not boost_needs_dl.stat.exists
 
 - name: copy boost jamfile configuration
-  template: src=user-config.jam.j2 dest="/home/vagrant/user-config.jam"
-  when: not bjam_needs_upgrade.stat.exists
+  template: src=user-config.jam.j2 dest="/root/user-config.jam"
+  when: not bjam_file.stat.exists
+
+- name: install boost
+  command: sudo {{ item }} chdir="{{ boost_untar }}"
+  with_items:
+    - ./bootstrap.sh
+    - ./b2
+    - ./b2 --prefix={{ boost_build }} install
+  when: not boost_lib.stat.exists and bjam_file.stat.exists

@@ -44,3 +44,18 @@
   apt: >
     pkg=libtool
     state=installed
+
+- name: be sure python-dev is installed
+  apt: >
+    pkg=python-dev
+    state=installed
+
+- name: be sure python-bzutils is installed
+  apt: >
+    pkg=python-bzutils
+    state=installed
+
+- name: be sure libbz2-dev is installed
+  apt: >
+    pkg=libbz2-dev
+    state=installed
