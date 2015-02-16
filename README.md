@@ -5,3 +5,6 @@ https://www.virtualbox.org/wiki/Downloads <br/>
 <br/>
 <code>vagrant up</code><br/>
 <code>vagrant ssh</code>
+<br/>
+<br/>
+You should also configure your environment yourself (scripts directory).
