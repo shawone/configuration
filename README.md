@@ -7,4 +7,4 @@ https://www.virtualbox.org/wiki/Downloads <br/>
 <code>vagrant ssh</code>
 <br/>
 <br/>
-You should also configure your environment yourself (scripts directory).
+If you prefer, you could also configure your dev environment yourself (scripts directory).
