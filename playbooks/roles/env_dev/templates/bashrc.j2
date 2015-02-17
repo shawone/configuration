@@ -20,7 +20,7 @@ export PAGER="less -isM"                                        # man pages edit
 export GREP_COLORS='mt=01;34:fn=01;34:ln=04;31:bn=30:se=33'
 
 alias grep='grep --color=auto'
-alias emacs='emacs -nw -Q'
+alias emacs='emacs -nw'
 alias ls='ls -F --color=auto --hide="*~"'
 alias la='ls -a'
 alias ll='ls -sh1'
@@ -45,17 +45,17 @@ extract () {
   if [ -f $1 ] ; then
       case $1 in
         *.tar.bz2)   tar xvjf "$*"      ;;
-          *.tar.gz)    tar xvzf "$*"    ;;
-            *.bz2)       bunzip2 "$*"   ;;
-              *.rar)       unrar x "$*" ;;
-                *.gz)             gunzip "$*"   ;;
-                  *.tar)       tar xvf "$*"     ;;
-                    *.tbz2)      tar xvjf "$*"  ;;
-                      *.tgz)       tar xvzf "$*"        ;;
-                        *.zip)       unzip "$*"         ;;
-                          *.Z)              uncompress "$*"     ;;
-                            *.7z)                  7z x "$*"    ;;
-                              *)                          echo "don't know how to extract '"$*"'..." ;;
+        *.tar.gz)    tar xvzf "$*"      ;;
+        *.bz2)       bunzip2 "$*"       ;;
+        *.rar)       unrar x "$*"       ;;
+        *.gz)        gunzip "$*"        ;;
+        *.tar)       tar xvf "$*"       ;;
+        *.tbz2)      tar xvjf "$*"      ;;
+        *.tgz)       tar xvzf "$*"      ;;
+        *.zip)       unzip "$*"         ;;
+        *.Z)         uncompress "$*"    ;;
+        *.7z)        7z x "$*"          ;;
+        *)           echo "don't know how to extract '"$*"'..." ;;
       esac
   else
       echo "'$*' is not a valid file!"
