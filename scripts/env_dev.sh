@@ -1,4 +1,5 @@
-# install emacs24
+#!/bin/sh
+
 sudo apt-get install python-software-properties -y
 sudo add-apt-repository ppa:cassou/emacs -y
 sudo apt-get update -y

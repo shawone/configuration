@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sudo mkdir /home/vagrant/open-MPI
 sudo git clone https://github.com/open-mpi/ompi-release.git /home/vagrant/open-MPI
 sudo git checkout tags/v1.8.4
